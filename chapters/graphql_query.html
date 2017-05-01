@@ -1,0 +1,251 @@
+ <section>
+    <h3>GraphQL Queries</h3>
+    <p>A GraphQL query is just an instruction for traversing the graph in a specific way, resulting in a tree.</p>
+    <pre><code class="hljs" data-trim contenteditable>
+        {
+            posts(count: 2) {
+                title,
+                comments(count: 5) {
+                    content
+                }
+            },
+            authors {
+                name
+            }
+        }
+    </code></pre>
+    <p><strong>posts & authors</strong>: <em>root query fields</em></p>
+    <p><strong>count</strong>: <em>arguments</em></p>
+</section>
+<section >
+    <h3>Alias or result in variables</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL query
+        {
+            postTitles: posts {
+                name
+            },
+            postIds: posts {
+                _id
+            }
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
+        {
+            "data": {
+                "postTitles": [
+                    {
+                        "title": "My first post"
+                    },
+                    {
+                        "title": "My second post"
+                    }
+                ],
+                "postIds": [
+                    {
+                        "_id": "1"
+                    },
+                    {
+                        "_id": "2"
+                    }
+                ]
+            }
+        }
+    </code></pre>
+</section>
+<section >
+    <h3>GraphQL query variables</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL query
+        query getPosts($postCount: Int!) {
+            posts(count: $postCount) {
+                title
+            }
+        }
+    </code></pre>
+    <p>
+        This is the full syntax to write a GraphQL querie and it's necessary if you want to use query variables.
+        <!--<br>
+        An error throws if we don't call query with the variable: Variable "$postCount" of required type "Int!" was not provided.-->
+    </p>
+    <ul>
+        <li>Can use variable anywhere in query even in fragments or mutations</li>
+        <li>Only some <strong>types</strong> can be use in query variable: <strong>Input Types</strong></li>
+    </ul>
+</section>
+<section style="font-size: 0.5em !important">
+    <h3>GraphQL Fragments</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL query
+        {
+            post1: post(_id: "1") {
+                ...postInfo,
+                date
+            },
+            post2: post(_id: "2") {
+                ...postInfo
+            }
+        }
+
+        fragment postInfo on Post {
+            _id,
+            title,
+            category
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
+        {
+            "data": {
+                "post1": {
+                    "_id": "1",
+                    "title": "My first post",
+                    "category": "IT",
+                    "date": "2018-05-20T09:00:00"
+                },
+                "post2": {
+                    "_id": "2",
+                    "title": "My second post",
+                    "category": "JS"
+                }
+            }
+        }
+    </code></pre>
+    <p>
+        <strong>postInfo</strong> is a fragment defined on the <strong>Post</strong> type and include:
+        _id, title, date, category fields
+        <br>
+        "<strong>...</strong>": simply use ES6 spread operator in order to use fragments into queries
+    </p>
+    <ul>
+        <li>Can mixe fragments and fields</li>
+        <li>Can use fragments with nested fields</li>
+        <li>Can use fragments with mutations</li>
+    </ul>
+</section>
+<section style="font-size: 0.5em !important">
+    <h3>GraphQL Inline Fragments</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL query
+        posts {
+            title
+            ... on ComputerScience {
+                languages
+            }
+            ... on ComputerGraphic {
+                media
+            }
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
+        {
+            "data": {
+                "posts": [
+                    {
+                        "title": "My second post",
+                        "languages": [
+                            {
+                                "Angular",
+                                "NGRX"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "My first post",
+                        "media": [
+                            {
+                                "Sculpture"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </code></pre>
+    <p>In the direct selection, you can only ask for fields that exist on the POST interface</p>
+    <p>To ask for a field on the concrete type, you need to use an inline fragment with a type condition.
+        Because the first fragment is labeled as <em>... on ComputerScience</em>, the primaryFunction field will only be executed if the <em>Post</em> returned is of the <em>ComputerScience</em> type. </p>
+    <p>It's like a condition, in fact</p>
+</section>
+<section>
+    <h3>GraphQL introspection with meta fields</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL query
+        {
+            search(text: "o") {
+                __typename
+                ... on Post {
+                    title
+                }
+                ... on User {
+                    username
+                }
+            }
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
+        {
+            "data": {
+                "search": [
+                    {
+                        "__typename": "Post",
+                        "title": "My first Post"
+                    },
+                    {
+                        "__typename": "User",
+                        "username": "root"
+                    }
+                ]
+            }
+        }
+    </code></pre>
+    <p>All introspection type begin with: "__"</p>
+</section>
+<section style="font-size: 0.65em !important">
+    <h3>GraphQL directives</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+    #GraphQL query
+    query Post($withComments: Boolean!) {
+        posts {
+            title
+            comments @skip(if: $withComments) {
+                author,
+                content
+            }
+        }
+    }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL variables
+        {
+            "withComments": false
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
+        {
+            "data": {
+                "posts": [
+                    {
+                        "title": "My first post"
+                    },
+                    "post2": {
+                        "title": "My second post"
+                    }
+                ]
+            }
+        }
+    </code></pre>
+    <p>
+        Directives can be useful to get out of situations where you otherwise would need to do string manipulation to add and remove fields in your query.
+        <br>
+        Default directive:
+    </p>
+    <ul>
+        <li>@include(if: Boolean) Only include this field in the result if the argument is true.</li>
+        <li>@skip(if: Boolean) Skip this field if the argument is true.</li>
+    </ul>
+</section>

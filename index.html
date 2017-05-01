@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="icon" href="images/favicon.ico" />
+
+		<title>Echyzen GraphQL Tutorial</title>
+				
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/blood.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="import" id="link_what" href="chapters/what.html">
+		<link rel="import" id="link_why" href="chapters/why.html">
+		<link rel="import" id="link_how" href="chapters/how.html">
+		<link rel="import" id="link_concurrence" href="chapters/concurrence.html">
+		<link rel="import" id="link_graphql_query" href="chapters/graphql_query.html">
+		<link rel="import" id="link_graphql_mutation" href="chapters/graphql_mutation.html">
+		<link rel="import" id="link_graphql_schema" href="chapters/graphql_schema.html">
+		<link rel="import" id="link_graphql_process" href="chapters/graphql_process.html">
+		<link rel="import" id="link_graphql_authentification" href="chapters/graphql_authentification.html">
+		<link rel="import" id="link_graphql_authorization" href="chapters/graphql_authorization.html">
+		<link rel="import" id="link_graphql_pagination" href="chapters/graphql_pagination.html">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-color="#0D9298">
+					<img src="images/graphql.png" style="border: none;" alt="logo graphql" />
+					<p>GraphQL Overview</p>
+				</section>
+
+				<section id="what"></section>
+				<section id="why"></section>
+				<section id="how"></section>
+				<section id="concurrence"></section>
+				<section id="graphql_query"></section>
+				<section id="graphql_mutation"></section>
+				<section id="graphql_schema"></section>
+				<section id="graphql_process"></section>
+				<section id="graphql_authentification"></section>
+				<section id="graphql_authorization"></section>
+				<!--<section id="graphql_pagination"></section>-->
+				<!--<section>
+					<h3>Other tutorials</h3>
+					<ul>
+						<li><a href="#" target="_blank">Relay</a></li>
+						<li><a href="#" target="_blank">React (soon)</a></li>
+						<li><a href="#" target="_blank">Redux (soon)</a></li>
+						<li><a href="#" target="_blank">NGRX (soon)</a></li>
+						<li><a href="#" target="_blank">Vert.x</a></li>
+						<li><a href="#" target="_blank">ELM</a></li>
+					</ul>
+				</section>-->
+				<section>
+					<h3>Bibliography</h3>
+					<ul>
+						<li><a href="http://graphql.org/" target="_blank">GraphQL</a></li>
+						<li><a href="https://facebook.github.io/relay/" target="_blank">Relay</a></li>
+						<li><a href="https://dev-blog.apollodata.com/graphql-vs-falcor-4f1e9cbf7504" target="_blank">Appollo post</a></li>
+						<li><a href="http://putaindecode.io/fr/articles/api/hateoas/" target="_blank">HATEOAS</a></li>
+						<li><a href="https://github.com/traverson/traverson" target="_blank">traverson</a></li>
+						<li><a href="https://stormpath.com/blog/put-or-post" target="_blank">Indempotence</a></li>
+						<li><a href="https://dev-blog.apollodata.com/a-guide-to-authentication-in-graphql-e002a4039d1" target="_blank">Authentification</a></li>
+						<li><a href="https://dev-blog.apollodata.com/auth-in-graphql-part-2-c6441bcc4302" target="_blank">Authorization</a></li>
+						<li><a href="https://dev-blog.apollodata.com/understanding-pagination-rest-graphql-and-relay-b10f835549e7" target="_blank">Pagination solutions</a></li>
+						<li><a href="http://graphql.org/learn/pagination/" target="_blank">GraphQL Pagination overview</a></li>
+						<li><a href="https://medium.com/@mattmazzola/graphql-pagination-implementation-8604f77fb254" target="_blank">GraphQL Pagination implementation</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>More links</h3>
+					<ul>
+						<li><a href="https://github.com/chentsulin/awesome-graphql#lib-js" target="_blank">JS library</a></li>
+						<li><a href="https://github.com/chentsulin/awesome-graphql#example-js" target="_blank">JS immplementation</a></li>
+					</ul>
+				</section>
+				<!--<div>TODO1</div>-->
+			</div>
+
+			<footer id="footer" class="animated-middle">
+				<ul class="icons">
+					<li><a href="https://github.com/GuillaumeUnice" class="icon" target="_blank"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UC2Y0v3L_J9wTFkkqnLuCDGg" class="icon" target="_blank"><i class="fa fa-youtube"></i></a></li>
+					<li><a href="https://twitter.com/EchyzenWebsite" class="icon" target="_blank"><i class="fa fa-twitter"></i></a></li>
+					<!--<li><a href="https://vimeo.com/user13696089" class="icon" target="_blank"><i class="fa fa-vimeo-square"></i></a></li>
+					<li><a href="https://uk.pinterest.com/guillaumeunice/" class="icon" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+					<li><a href="https://www.linkedin.com/in/guillaume-borg-0904b8a8" class="icon" target="_blank"><i class="fa fa-linkedin"></i></a></li>-->
+				</ul>
+			</footer>
+		</div>
+		
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/web_component/webcomponents.min.js"></script>
+		
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+		<script>
+			document.getElementById("what").innerHTML = document.getElementById('link_what').import.body.innerHTML;
+			document.getElementById("why").innerHTML = document.getElementById('link_why').import.body.innerHTML;
+			document.getElementById("how").innerHTML = document.getElementById('link_how').import.body.innerHTML;
+			document.getElementById("concurrence").innerHTML = document.getElementById('link_concurrence').import.body.innerHTML;
+			document.getElementById("graphql_query").innerHTML = document.getElementById('link_graphql_query').import.body.innerHTML;
+			document.getElementById("graphql_mutation").innerHTML = document.getElementById('link_graphql_mutation').import.body.innerHTML;
+			document.getElementById("graphql_schema").innerHTML = document.getElementById('link_graphql_schema').import.body.innerHTML;
+			document.getElementById("graphql_process").innerHTML = document.getElementById('link_graphql_process').import.body.innerHTML;
+			document.getElementById("graphql_authentification").innerHTML = document.getElementById('link_graphql_authentification').import.body.innerHTML;
+			document.getElementById("graphql_authorization").innerHTML = document.getElementById('link_graphql_authorization').import.body.innerHTML;
+			document.getElementById("graphql_pagination").innerHTML = document.getElementById('link_graphql_pagination').import.body.innerHTML;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<section>
+    <h3>Why?</h3>
+    <p>
+ 		In order to manage and maintain the increasingly complex data requirements of modern web/mobile apps.
+    </p>
+    <p>
+        Even if RESTful (or HATEOAS) API normalize and bring solution for generic API, when performance and custom query become necessary GraphQL is the best solution.
+    </p>
+</section>
+<section>
+    <h4>Perhaps a shower before? SOAP = Service Oriented Application Protocol</h4>
+    <p>
+        Client & Server share a WSDL = Web Service Description Language (in XML the less verbose language :D)
+    </p>
+    <ul>
+        <li>Use HTTP POST method</li>
+        <li>HTTP Status Code alreeady 200</li>
+        <li>Send XML language</li>
+    </ul>
+    <p>
+        Some problems: verboses, use HTTP POST only (security problems no Idempotent => DoS attack), heavy
+    </p>
+</section>
+<section>
+    <h4>REST = REpresentational State Transfert</h4>
+    <ul>
+        <li>It must be a client-server system</li>
+        <li>It has to be stateless</li>
+        <li>It has to support a caching system</li>
+        <li>It has to be uniformly accessible</li>
+        <li>It has to be layered (support scalability)</li>
+        <li>It may be able to transfer executable code</li>
+    </ul>
+</section>
+<section>
+    <h4>REST Implementation</h4>
+    <ul>
+        <li>Use <em>resources</em> or <em>Aggregation head</em> in order to represent data</li>
+        <li>Use HTTP Methods (CRUD = POST, GET, PUT, DELETE)</li>
+        <li>Return appropriate HTTP status codes (<a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes" target="_blank">Here</a>)</li>
+    </ul>
+</section>
+<section>
+    <h3>HATEOAS = Hypermedia As The Engine Of Application State</h3>
+    <p>Like with WEB technology use API with hyperlinks model, thus return data contains links allow to use with the current resource(s) requested</p>
+    <p>
+        In order to normalize and structure some notations have been created like <a href="https://en.wikipedia.org/wiki/Hypertext_Application_Language" target="_blank">HAL = Hypertext Application Language</a>
+        <br>
+        But also many libraries like <a href="https://github.com/traverson/traverson" blank="_blank">traverson</a> for frontend (with <a href="https://github.com/traverson/traverson-hal" blank="_blank">HAL</a>) 
+    </p>
+</section>

@@ -1,0 +1,51 @@
+<section id="">
+    <h3>GraphQL schemas: introduction</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL Schema
+        const Query = new GraphQLObjectType({
+            name: 'NewsSchema',
+            description: "Root of the News Schema",
+            fields: () => ({
+                posts: {
+                    type: new GraphQLList(Post),
+                    resolve: function() {
+                        return PostsList;
+                    }
+                }
+            })
+        });
+
+        const Schema = new GraphQLSchema({
+            query: Query
+        });
+    </code></pre>
+</section>
+<section>
+    <h3>GraphQL schemas: GraphQLObjectType</h3>
+    <pre><code class="hljs" data-trim contenteditable style="font-size: 0.85em !important; line-height: 1em;">
+        const Author = new GraphQLObjectType({
+            name: "Author",
+            description: "An author",
+            fields: () => ({
+                _id: {type: new GraphQLNonNull(GraphQLString)},
+                name: {type: new GraphQLNonNull(GraphQLString)}
+            })
+        });
+
+        const Post = new GraphQLObjectType({
+            name: "Post",
+            description: "A news Post",
+            fields: () => ({
+                _id: {GraphQLString},
+                title: {type: new GraphQLNonNull(GraphQLString)},
+                content: {type: new GraphQLNonNull(GraphQLString)},
+                author: {
+                    type: Author,
+                    resolve: function(post) {
+                        return AuthorsList.find(a => a._id == post.author) || "anonymous author"; // our responsability when non trivial + return default value
+                    }
+                }
+            })
+        });
+    </code></pre>
+</section>

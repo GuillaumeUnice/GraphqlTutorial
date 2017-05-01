@@ -1,0 +1,42 @@
+<section>
+    <h3>GraphQL Mutations</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        mutation {
+            createPost(
+                title: "My first post",
+                content: "..."
+            ) {
+                _id
+                title
+            }
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        {
+            "data": {
+                "createPost": {
+                    "_id": "2xdvdev55s5csf1s3sv3s4v",
+                    "title": "My first post"
+                }
+            }
+        }
+    </code></pre>
+    <p>Errors control example => Mutations executed as a sequence</p>
+    <p>
+        Otherwise, it's hard to detect errors like adding the same author again and again.
+    </p>
+    <!--<ul>
+        <li>argument "title" of field "createPost" is required.</li>
+        <li>Post already exists: 1.</li>
+    </ul>-->
+</section>
+<section>
+    <h3>GraphQL Mutations responses</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+      
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+      
+    </code></pre>
+    <p></p>
+</section>

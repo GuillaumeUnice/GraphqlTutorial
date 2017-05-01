@@ -1,0 +1,70 @@
+ <section>
+    <h3>GraphQL Authentification</h3>
+    <p>The GraphQL specification doesn't tell you how to do authentification</p>
+    <p>Moreover, it can be difficult to architecture that when you have one uniq monoroute.</p>
+    <p>
+       Nevertherless, we can divide in two main strategies:
+    </p>
+    <ul>
+        <li>By Web Server (classic solution)</li>
+        <li>By GraphQL itself</li>
+    </ul>
+</section>
+<section>
+    <h3>Authentification by Web Server</h3>
+    <ul>
+        <li>Add additional endpoint</li>
+        <li>Use middleware</li>
+        <li>Pass user information through context</li>
+    </ul>
+    <pre><code class="hljs" data-trim contenteditable style="font-size: 0.85em !important; line-height: 1em;">
+        #Express middleware
+        var jwt = require('jsonwebtoken');
+        var constants = require('../config/constants');
+
+        exports.ensureAuthorized = function(req, res, next) {
+            var bearerToken;
+            var bearerHeader = req.headers["authorization"];
+            console.log(req.headers.authorization);
+            console.log(req.headers["authorization"]);
+            if (typeof bearerHeader !== 'undefined') {
+
+                var bearer = bearerHeader.split(" ");
+                bearerToken = bearer[1];
+                console.log(bearerToken);
+                jwt.verify(bearerHeader, constants.PUBLIC_KEY, function(err, decoded) {
+                if(err) {
+                    res.status(401);
+                    res.json({ status: constants.JSON_STATUS_WARNING,
+                    title: 'Connexion',
+                    message: 'You must be connected to make this operation !'
+                    });
+                    return;
+                }
+                req.token = decoded;
+                next();
+                });
+            } else {
+                res.status(401);
+                res.json({ status: constants.JSON_STATUS_WARNING,
+                    title: 'Connexion',
+                    message: 'You must be connected to make this operation !'
+                });
+            }
+        };
+    </code></pre>
+</section>
+<section>
+    <h3>By GraphQL itself</h3>
+    <p>
+        Inject in context everytime can be problematic
+        <br>
+        Indeed, every query or not executed in a synchronous way, so you couldn't maintain this type of structure trivially.
+        <br>
+        Some workaround are possible like use mutations in some case <!-- Mais juste en disant cela on voit bien que l'on destructure GraphQL lui même. Or ce qui le caractérise GraphQL c'est sa structure et maintenabilité propre-->
+    <p>
+    <p>
+        In order to integrate authentification properly you have to use a pattern, and respect them.
+        Thus, some compagny have began to create some library: <a href="https://github.com/thebigredgeek/apollo-resolvers" target="_blank">CombineResolver</a> wich available bubbling up authentification errors
+    </p>
+</section>

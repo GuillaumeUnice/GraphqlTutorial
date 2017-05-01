@@ -1,0 +1,97 @@
+ <section>
+    <h3>GraphQL Authorization</h3>
+    <p>Can't be manage by library, external component</p>
+    <!-- En effet seul nous savons ce que l'on souhaite, c'est une valeur métier il est important de le rappeler-->
+
+
+    <!--<p>
+        Each GraphQL fields define the relationship between this type and other types (one to one, or one to many).
+        
+        If you think about your schema in terms of a graph, types are the nodes of your graph, and fields are edges.
+        Scalar types have no fields, so they form the leaf nodes of your graph
+        
+        Since a GraphQL query is just a set of instructions for how to traverse the graph, 
+        there are two natural options for enforcing permissions:
+        
+    </p>-->
+    <p>Two main strategies:</p>
+    <ul>
+        <li>Permissions on edges</li>
+        <li>Permissions on nodes</li>
+    </ul>
+</section>
+<section>
+    <h3>Permissions on edges</h3>
+    <pre><code class="hljs" data-trim contenteditable style="font-size: 0.85em !important; line-height: 1em;">
+        #GraphlQL server
+
+        let allTasks = new GraphQLObjectType({
+            name: 'allTasks',
+            fields: () => ({
+                id: { type: GraphQLString },
+                name: { type: GraphQLString },
+                tasks: {
+                    type: new GraphQLList(Task),
+                    resolve: function(list){
+                        return db.tasks.find({"id": list.id}).toArray();
+                    }
+                })
+            });
+        };
+    </code></pre>
+
+    <!-- En effet, à l'aide des hooks resolve que nous fournit GraphQL on pourrait être tenté par cette solution néanmoins c'est une grave errreur d'y succomber
+        L'explication est assez simple (d'autant que cela pose aussi des problèmes pour mettre en place des strategies de caching)
+    -->
+    <pre><code class="hljs" data-trim contenteditable style="font-size: 0.85em !important; line-height: 1em;">
+        #GraphlQL server
+        
+        let query = new GraphQLObjectType({
+            name: 'Query',
+            fields: {
+                getTasksLists: {
+                type: allTasks,
+                description: "Get a specific task list",
+                args: {
+                    id: { type: GraphQLID }
+                },
+                resolve: function(root, {id}, ctx){
+                    return db.TaskLists.get(id)
+                    .then( list => {
+                        if(list.owner_id && list.owner_id != ctx.userId){
+                            throw new Error("Not authorized to see this list");
+                        } else {
+                            return list;
+                        }
+                    });
+                }
+                }
+            }
+        });
+    </code></pre>
+    <p>
+        Multiple edge lead a specific node!!!
+        <br>
+        So we have to keep calm and DRY so don't protect all the edge but the node directly
+    </p>
+</section>
+<section>
+    <h3>Permissions on nodes</h3>
+<!-- Ok donc la solution est de sécuriser au niveau des noeud directmeent cependant, c'est pas aussi simple,
+En effet, pour le coup GraphQL ne nous fournit pas de hook par défaut
+Fields ont des resolvers mais un type n'en a pas
+-->
+    <p>
+        GraphQL doesn’t have got a type-level resolve/hook function
+        <br>
+        So we have to extract this logic yourself<!-- Un autre avantage et de pouvoir par là même avoir un fort découplage ce qui est tjrs appréciable
+        Le fait aller chercher les informations auprès de data layer doit tjrs être de manière générale à l'extérieur des fonctions de resolve
+        et dans un endroit centralisé peut être une solution. Après cela dépend au cas par cas si votre architecture est en micro-service ou pas auquel cas il vaut peut être mieux
+        que chaqun gère sont authorization, etc. Car oui GraphQL on la dit en tout début d'introduction peut aussi être vu comme wrapper d'API exposant ainsi un point d'entrée typé et facilement maintenable sont cractère sous forme de librari permet de facilement faire une transition en douceur de REST vers GraphQL
+        -->
+    <p>
+    <p>
+        In order to integrate authentification properly you have to use a pattern, and respect them.
+        Thus, some compagny have began to create some library: <a href="https://github.com/thebigredgeek/apollo-resolvers" target="_blank">CombineResolver</a> wich available bubbling up authentification errors
+    </p>
+</section>
