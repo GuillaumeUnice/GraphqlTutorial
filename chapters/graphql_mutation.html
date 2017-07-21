@@ -1,6 +1,7 @@
 <section>
     <h3>GraphQL Mutations</h3>
     <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL mutation
         mutation {
             createPost(
                 title: "My first post",
@@ -12,6 +13,7 @@
         }
     </code></pre>
     <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL result
         {
             "data": {
                 "createPost": {
@@ -21,7 +23,7 @@
             }
         }
     </code></pre>
-    <p>Errors control example => Mutations executed as a sequence</p>
+    <p>GraphQL respect an error control flow => Mutations executed as a sequence</p>
     <p>
         Otherwise, it's hard to detect errors like adding the same author again and again.
     </p>
@@ -33,10 +35,25 @@
 <section>
     <h3>GraphQL Mutations responses</h3>
     <pre><code class="hljs" data-trim contenteditable>
-      
+        #GraphQL mutation result
+        {
+            "data": {
+                "createPost": {
+                    "_id": "2xdvdev55s5csf1s3sv3s4v",
+                    "title": "My first post"
+                }
+            }
+        }
     </code></pre>
     <pre><code class="hljs" data-trim contenteditable>
-      
+        #GraphQL error result
+        {
+            "errors": [
+                {
+                    "message": "Must provide an operation"
+                }
+            ]
+        }
     </code></pre>
     <p></p>
 </section>

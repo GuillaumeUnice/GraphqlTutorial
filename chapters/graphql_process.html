@@ -1,10 +1,9 @@
 <section>
     <h3>GraphQL validation</h3>
-    <p>Type system &amp Execution process allow server &amp client to effectively inform developers when an invalid query has been created whithout having to rely on runtime checks.</p>
+    <p>Type system &amp Execution process allow server &amp client to effectively inform developers when an invalid query has been created.</p>
     <ul>
-        <li>Type does contain field</li>
-        <li>No fragement cycle (refer to itself)</li>
-        <li>If field returns other that scalar or enum, we need to specify</li>
+        <li>Custom Type (other than scalar, enum, etc) does contain field</li>
+        <li>No fragment cycle (refer to itself)</li>
     </ul>
 </section>
 <section>
@@ -13,15 +12,10 @@
         Root Type represents all possible entry points into the GraphQL API.
     </p>
     <p>
-        The resolver process can return (and infer) result directly if trivial. But in case of asynchronous resolvers we have to use <em>Promise</em>.
+        The <strong>resolver</strong> process can return (and infer) directly trivial result. Ohterwise, in case of asynchronous resolvers we have to use <em>Promise</em>.
         <br>
-        Each resolve function have got current object, arguments and context in params.
+        Each resolve function have got current object, potentially arguments and context in parameters.
         <br>
         Some resolve function can be executed concurrently by GraphQL.
     </p>
-    <ul>
-        <li>Type does contain field</li>
-        <li>No fragement cycle (refer to itself)</li>
-        <li>If field returns other that scalar or enum, we need to specify</li>
-    </ul>
 </section>

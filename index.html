@@ -63,15 +63,16 @@
 					<ul>
 						<li><a href="http://graphql.org/" target="_blank">GraphQL</a></li>
 						<li><a href="https://facebook.github.io/relay/" target="_blank">Relay</a></li>
-						<li><a href="https://dev-blog.apollodata.com/graphql-vs-falcor-4f1e9cbf7504" target="_blank">Appollo post</a></li>
-						<li><a href="http://putaindecode.io/fr/articles/api/hateoas/" target="_blank">HATEOAS</a></li>
-						<li><a href="https://github.com/traverson/traverson" target="_blank">traverson</a></li>
-						<li><a href="https://stormpath.com/blog/put-or-post" target="_blank">Indempotence</a></li>
+						<li><a href="https://www.howtographql.com/" target="_blank">GraphQL summary</a></li>
 						<li><a href="https://dev-blog.apollodata.com/a-guide-to-authentication-in-graphql-e002a4039d1" target="_blank">Authentification</a></li>
 						<li><a href="https://dev-blog.apollodata.com/auth-in-graphql-part-2-c6441bcc4302" target="_blank">Authorization</a></li>
 						<li><a href="https://dev-blog.apollodata.com/understanding-pagination-rest-graphql-and-relay-b10f835549e7" target="_blank">Pagination solutions</a></li>
 						<li><a href="http://graphql.org/learn/pagination/" target="_blank">GraphQL Pagination overview</a></li>
 						<li><a href="https://medium.com/@mattmazzola/graphql-pagination-implementation-8604f77fb254" target="_blank">GraphQL Pagination implementation</a></li>
+						<li><a href="https://dev-blog.apollodata.com/graphql-vs-falcor-4f1e9cbf7504" target="_blank">Appollo post</a></li>
+						<li><a href="http://putaindecode.io/fr/articles/api/hateoas/" target="_blank">HATEOAS</a></li>
+						<li><a href="https://github.com/traverson/traverson" target="_blank">traverson</a></li>
+						<li><a href="https://stormpath.com/blog/put-or-post" target="_blank">Indempotence</a></li>
 					</ul>
 				</section>
 				<section>
@@ -106,7 +107,11 @@
 		</script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-		<script src="js/web_component/webcomponents.min.js"></script>
+		<script src="js/web_component/HTMLImports.min.js"></script>
+		<!--<script src="js/web_component/CustomElements.min.js"></script>
+		<script src="js/web_component/MutationObserver.min.js"></script>
+		
+		<script src="js/web_component/webcomponents.min.js"></script>-->
 		
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
@@ -123,17 +128,20 @@
 			});
 		</script>
 		<script>
-			document.getElementById("what").innerHTML = document.getElementById('link_what').import.body.innerHTML;
-			document.getElementById("why").innerHTML = document.getElementById('link_why').import.body.innerHTML;
-			document.getElementById("how").innerHTML = document.getElementById('link_how').import.body.innerHTML;
-			document.getElementById("concurrence").innerHTML = document.getElementById('link_concurrence').import.body.innerHTML;
-			document.getElementById("graphql_query").innerHTML = document.getElementById('link_graphql_query').import.body.innerHTML;
-			document.getElementById("graphql_mutation").innerHTML = document.getElementById('link_graphql_mutation').import.body.innerHTML;
-			document.getElementById("graphql_schema").innerHTML = document.getElementById('link_graphql_schema').import.body.innerHTML;
-			document.getElementById("graphql_process").innerHTML = document.getElementById('link_graphql_process').import.body.innerHTML;
-			document.getElementById("graphql_authentification").innerHTML = document.getElementById('link_graphql_authentification').import.body.innerHTML;
-			document.getElementById("graphql_authorization").innerHTML = document.getElementById('link_graphql_authorization').import.body.innerHTML;
-			document.getElementById("graphql_pagination").innerHTML = document.getElementById('link_graphql_pagination').import.body.innerHTML;
+		    document.addEventListener( 'HTMLImportsLoaded', function () 
+    		{
+				document.getElementById("what").innerHTML = document.getElementById('link_what').import.body.innerHTML;
+				document.getElementById("why").innerHTML = document.getElementById('link_why').import.body.innerHTML;
+				document.getElementById("how").innerHTML = document.getElementById('link_how').import.body.innerHTML;
+				document.getElementById("concurrence").innerHTML = document.getElementById('link_concurrence').import.body.innerHTML;
+				document.getElementById("graphql_query").innerHTML = document.getElementById('link_graphql_query').import.body.innerHTML;
+				document.getElementById("graphql_mutation").innerHTML = document.getElementById('link_graphql_mutation').import.body.innerHTML;
+				document.getElementById("graphql_schema").innerHTML = document.getElementById('link_graphql_schema').import.body.innerHTML;
+				document.getElementById("graphql_process").innerHTML = document.getElementById('link_graphql_process').import.body.innerHTML;
+				document.getElementById("graphql_authentification").innerHTML = document.getElementById('link_graphql_authentification').import.body.innerHTML;
+				document.getElementById("graphql_authorization").innerHTML = document.getElementById('link_graphql_authorization').import.body.innerHTML;
+				document.getElementById("graphql_pagination").innerHTML = document.getElementById('link_graphql_pagination').import.body.innerHTML;
+			})
 		</script>
 	</body>
 </html>

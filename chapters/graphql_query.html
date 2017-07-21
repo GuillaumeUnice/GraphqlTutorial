@@ -15,7 +15,7 @@
         }
     </code></pre>
     <p><strong>posts & authors</strong>: <em>root query fields</em></p>
-    <p><strong>count</strong>: <em>arguments</em></p>
+    <p><strong>count</strong>: <em>argument</em></p>
 </section>
 <section >
     <h3>Alias or result in variables</h3>
@@ -113,13 +113,13 @@
         }
     </code></pre>
     <p>
-        <strong>postInfo</strong> is a fragment defined on the <strong>Post</strong> type and include:
-        _id, title, date, category fields
+        <strong>postInfo</strong> is a fragment defined on the <strong>Post</strong> type and including:
+        _id, title, date, category => fields
         <br>
-        "<strong>...</strong>": simply use ES6 spread operator in order to use fragments into queries
+        "<strong>...</strong>": simply use ES6 spread operator syntax in order to use fragments into queries
     </p>
     <ul>
-        <li>Can mixe fragments and fields</li>
+        <li>Can mix fragments and fields</li>
         <li>Can use fragments with nested fields</li>
         <li>Can use fragments with mutations</li>
     </ul>
@@ -164,10 +164,10 @@
             }
         }
     </code></pre>
-    <p>In the direct selection, you can only ask for fields that exist on the POST interface</p>
-    <p>To ask for a field on the concrete type, you need to use an inline fragment with a type condition.
-        Because the first fragment is labeled as <em>... on ComputerScience</em>, the primaryFunction field will only be executed if the <em>Post</em> returned is of the <em>ComputerScience</em> type. </p>
-    <p>It's like a condition, in fact</p>
+    <p>In this exemple on a traditional selection way, you can only ask for fields that exist on the <em>posts</em> interface type</p>
+    <p>To ask for a field on a concrete type, you need to use an inline fragment with a type condition.
+        Here, the first fragment is labeled as <em>... on ComputerScience</em>, the primary function field: <em>languages</em> will only be executed if the <em>Post</em> returned is a type of <em>ComputerScience</em>.</p>
+    <p>Actually it's like a condition.</p>
 </section>
 <section>
     <h3>GraphQL introspection with meta fields</h3>
@@ -240,7 +240,7 @@
         }
     </code></pre>
     <p>
-        Directives can be useful to get out of situations where you otherwise would need to do string manipulation to add and remove fields in your query.
+        Directives can be useful to cope of specific situations that avoid string manipulation of query (add and remove fields in your query).
         <br>
         Default directive:
     </p>
