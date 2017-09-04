@@ -6,13 +6,13 @@
 
     <!--<p>
         Each GraphQL fields define the relationship between this type and other types (one to one, or one to many).
-        
+
         If you think about your schema in terms of a graph, types are the nodes of your graph, and fields are edges.
         Scalar types have no fields, so they form the leaf nodes of your graph
-        
-        Since a GraphQL query is just a set of instructions for how to traverse the graph, 
+
+        Since a GraphQL query is just a set of instructions for how to traverse the graph,
         there are two natural options for enforcing permissions:
-        
+
     </p>-->
     <p>Two main strategies:</p>
     <ul>
@@ -45,26 +45,26 @@
     -->
     <pre><code class="hljs" data-trim contenteditable style="font-size: 0.85em !important; line-height: 1em;">
         #GraphlQL server
-        
+
         let query = new GraphQLObjectType({
             name: 'Query',
             fields: {
                 getTasksLists: {
-                type: allTasks,
-                description: "Get a specific task list",
-                args: {
-                    id: { type: GraphQLID }
-                },
-                resolve: function(root, {id}, ctx){
-                    return db.TaskLists.get(id)
-                    .then( list => {
-                        if(list.owner_id && list.owner_id != ctx.userId){
-                            throw new Error("Not authorized to see this list");
-                        } else {
-                            return list;
-                        }
-                    });
-                }
+                    type: allTasks,
+                    description: "Get a specific task list",
+                    args: {
+                        id: { type: GraphQLID }
+                    },
+                    resolve: function(root, {id}, ctx){
+                        return db.TaskLists.get(id)
+                        .then( list => {
+                            if(list.owner_id && list.owner_id != ctx.userId){
+                                throw new Error("Not authorized to see this list");
+                            } else {
+                                return list;
+                            }
+                        });
+                    }
                 }
             }
         });

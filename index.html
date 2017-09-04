@@ -7,7 +7,7 @@
 		<link rel="icon" href="images/favicon.ico" />
 
 		<title>Echyzen GraphQL Tutorial</title>
-				
+
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/blood.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -21,8 +21,12 @@
 		<link rel="import" id="link_concurrence" href="chapters/concurrence.html">
 		<link rel="import" id="link_graphql_query" href="chapters/graphql_query.html">
 		<link rel="import" id="link_graphql_mutation" href="chapters/graphql_mutation.html">
+		<link rel="import" id="link_graphql_subscription" href="chapters/graphql_subscription.html">
+		<link rel="import" id="link_graphql_client" href="chapters/graphql_client.html">
 		<link rel="import" id="link_graphql_schema" href="chapters/graphql_schema.html">
 		<link rel="import" id="link_graphql_process" href="chapters/graphql_process.html">
+		<link rel="import" id="link_graphql_server" href="chapters/graphql_server.html">
+		<link rel="import" id="link_graphql_performance" href="chapters/graphql_performance.html">
 		<link rel="import" id="link_graphql_authentification" href="chapters/graphql_authentification.html">
 		<link rel="import" id="link_graphql_authorization" href="chapters/graphql_authorization.html">
 		<link rel="import" id="link_graphql_pagination" href="chapters/graphql_pagination.html">
@@ -42,8 +46,12 @@
 				<section id="concurrence"></section>
 				<section id="graphql_query"></section>
 				<section id="graphql_mutation"></section>
+				<section id="graphql_subscription"></section>
+				<section id="graphql_client"></section>
 				<section id="graphql_schema"></section>
 				<section id="graphql_process"></section>
+				<section id="graphql_server"></section>
+				<section id="graphql_performance"></section>
 				<section id="graphql_authentification"></section>
 				<section id="graphql_authorization"></section>
 				<!--<section id="graphql_pagination"></section>-->
@@ -79,7 +87,7 @@
 					<h3>More links</h3>
 					<ul>
 						<li><a href="https://github.com/chentsulin/awesome-graphql#lib-js" target="_blank">JS library</a></li>
-						<li><a href="https://github.com/chentsulin/awesome-graphql#example-js" target="_blank">JS immplementation</a></li>
+						<li><a href="https://github.com/chentsulin/awesome-graphql#example-js" target="_blank">JS implementation</a></li>
 					</ul>
 				</section>
 				<!--<div>TODO1</div>-->
@@ -96,7 +104,7 @@
 				</ul>
 			</footer>
 		</div>
-		
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -110,9 +118,9 @@
 		<script src="js/web_component/HTMLImports.min.js"></script>
 		<!--<script src="js/web_component/CustomElements.min.js"></script>
 		<script src="js/web_component/MutationObserver.min.js"></script>
-		
+
 		<script src="js/web_component/webcomponents.min.js"></script>-->
-		
+
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -128,7 +136,7 @@
 			});
 		</script>
 		<script>
-		    document.addEventListener( 'HTMLImportsLoaded', function () 
+		    document.addEventListener( 'HTMLImportsLoaded', function ()
     		{
 				document.getElementById("what").innerHTML = document.getElementById('link_what').import.body.innerHTML;
 				document.getElementById("why").innerHTML = document.getElementById('link_why').import.body.innerHTML;
@@ -136,8 +144,12 @@
 				document.getElementById("concurrence").innerHTML = document.getElementById('link_concurrence').import.body.innerHTML;
 				document.getElementById("graphql_query").innerHTML = document.getElementById('link_graphql_query').import.body.innerHTML;
 				document.getElementById("graphql_mutation").innerHTML = document.getElementById('link_graphql_mutation').import.body.innerHTML;
+				document.getElementById("graphql_subscription").innerHTML = document.getElementById('link_graphql_subscription').import.body.innerHTML;
+				document.getElementById("graphql_client").innerHTML = document.getElementById('link_graphql_client').import.body.innerHTML;
 				document.getElementById("graphql_schema").innerHTML = document.getElementById('link_graphql_schema').import.body.innerHTML;
 				document.getElementById("graphql_process").innerHTML = document.getElementById('link_graphql_process').import.body.innerHTML;
+				document.getElementById("graphql_server").innerHTML = document.getElementById('link_graphql_server').import.body.innerHTML;
+				document.getElementById("graphql_performance").innerHTML = document.getElementById('link_graphql_performance').import.body.innerHTML;
 				document.getElementById("graphql_authentification").innerHTML = document.getElementById('link_graphql_authentification').import.body.innerHTML;
 				document.getElementById("graphql_authorization").innerHTML = document.getElementById('link_graphql_authorization').import.body.innerHTML;
 				document.getElementById("graphql_pagination").innerHTML = document.getElementById('link_graphql_pagination').import.body.innerHTML;

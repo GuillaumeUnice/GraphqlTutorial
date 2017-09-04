@@ -1,0 +1,44 @@
+<section>
+    <h3>GraphQL Subscriptions</h3>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL subscription
+        subscription PostSubscription($input: PostSubscriptionInput) {
+            postSubscribe(input: $input) {
+                comment {
+                    author,
+                    content
+                }
+            }
+        }
+    </code></pre>
+    <pre><code class="hljs" data-trim contenteditable>
+        #GraphQL subscription result
+        {
+            "data": {
+                "postSubscribe": {
+                    "comment": {
+                        "author": "foo",
+                        "content": "bar"
+                    }
+                }
+            }
+        }
+    </code></pre>
+<!--input PostSubscription {
+  PostId: string
+  clientSubscriptionId: string
+}-->
+
+
+    <p>Event-based subscription approach (Event Bus)</p>
+    <p>
+        Currently in working draft specification but already available thanks to <a href="https://github.com/graphql/graphql-js" target="_blank">graphql-js</a>.
+    </p>
+    <!--
+        However, often times clients want to get pushed updates from the server when data they care about changes.
+        To support that, we’ve introduced a third operation into the GraphQL specification: subscription.
+        Contient la liste de tous les events auxquelles le client peut souscrire.
+        the event-based subscription approach
+    -->
+</section>
+
