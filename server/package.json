@@ -1,0 +1,36 @@
+{
+  "name": "graphql_tutorial",
+  "version": "1.0.0",
+  "description": "GraphQL TodoList",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node --presets=es2015,stage-2",
+    "buildSchema": "nodemon server2.js --exec babel-node --presets=es2015,stage-2",
+    "graphTools": "nodemon server3.js --exec babel-node --presets=es2015,stage-2"
+  },
+  "keywords": [
+    "graphql",
+    "mongodb",
+    "express-graphql"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "nodemon": "^1.11.0",
+    "supervisor": "0.9.x"
+  },
+  "dependencies": {
+    "apollo-server-express": "^1.1.2",
+    "babel": "^5.4.7",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-graphql": "^0.6.7",
+    "express-mongo-db": "^2.0.3",
+    "graphql": "^0.10.5",
+    "graphql-tools": "^1.2.2",
+    "mongodb": "^2.2.31",
+    "nodemon": "^1.11.0",
+    "promised-mongo": "1.x.x"
+  }
+}
