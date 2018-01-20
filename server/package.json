@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "GraphQL TodoList",
   "scripts": {
-    "start": "nodemon server.js --exec babel-node --presets=es2015,stage-2",
-    "buildSchema": "nodemon server2.js --exec babel-node --presets=es2015,stage-2",
-    "graphTools": "nodemon server3.js --exec babel-node --presets=es2015,stage-2"
+    "start": "nodemon server.js --exec babel-node --presets=es2015,stage-2 --ignore 'data/*'",
+    "buildSchema": "nodemon server2.js --exec babel-node --presets=es2015,stage-2 --ignore 'data/*'",
+    "graphTools": "nodemon server3.js --exec babel-node --presets=es2015,stage-2 --ignore 'data/*'"
   },
   "keywords": [
     "graphql",
