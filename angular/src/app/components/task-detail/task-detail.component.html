@@ -1,0 +1,9 @@
+<div class="task_container">
+    <label class="switch">
+        <input type="checkbox" pe="checkbox" (click)="complete()" [checked]="task.isCompleted">
+        <div class="slider"></div>
+    </label>
+
+    <p [ngClass]="{'completed': task.isCompleted}" >Ceci est une tâche</p>
+    <button (click)="remove()">Remove</button>
+</div>

@@ -1,0 +1,12 @@
+<div class="task_form_container">
+  <form #formLogin="ngForm" (ngSubmit)="createTask.emit(formLogin.value)" novalidate>
+
+      <label for="task">Task :</label>
+      <input type="text" [(ngModel)]="task" name="task" minlength="3" placeholder="your task" required #localTask="ngModel">
+      <button [disabled]="!formLogin.valid" type="submit">Submit</button>
+      <div *ngIf="!localTask.valid && (localTask.dirty || formLogin.submitted )">
+          task is required (3 characters minimum)
+      </div>
+  </form>
+<div>
+  

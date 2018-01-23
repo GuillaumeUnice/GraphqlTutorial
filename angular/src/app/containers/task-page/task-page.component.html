@@ -1,0 +1,6 @@
+<div class="task-page">
+    <div class="tasks">
+        <task-form (createTask)="createTask($event)"></task-form>
+        <task-list [tasks]="tasks$ | async"></task-list>
+    </div>
+</div>

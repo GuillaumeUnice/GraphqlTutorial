@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+input {
+    height: 30px;
+    border: solid 2px #2196F3;
+    margin: 0px 15px;
+    color: #2196F3;
+    font-weight: bold;
+    padding: 0 3px;
+    width: 400px;
+}
+
+button {
+  background-color: #AAA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2196F3;
+}

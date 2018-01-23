@@ -1,0 +1,12 @@
+<div class="dashboard">
+  <item class="dashboard-item" routerLink="/detail/{{taskList._id}}" [title]="taskList.name" *ngFor="let taskList of taskLists"></item>
+  <item class="dashboard-item" *ngIf="!displayTaskListForm" (click)="AddTaskList()"></item>
+  <form style="margin: auto;" *ngIf="displayTaskListForm" #formAddTaskList="ngForm" (ngSubmit)="createTaskList(formAddTaskList.value)" novalidate>
+      <label for="taskList">Name :</label>
+      <input type="text" [(ngModel)]="taskList" name="taskList" minlength="3" placeholder="your task list name" required #localTaskList="ngModel">
+      <button [disabled]="!formAddTaskList.valid" type="submit">Submit</button>
+      <div *ngIf="!localTaskList.valid && (localTaskList.dirty || formAddTaskList.submitted )">
+          task is required (3 characters minimum)
+      </div>
+  </form>
+</div>

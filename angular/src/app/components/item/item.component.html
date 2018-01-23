@@ -1,0 +1,6 @@
+<div class="item">
+    <span *ngIf="title; else NoTitleCase">
+        {{title}}
+    </span>
+    <ng-template #NoTitleCase>+</ng-template>
+</div>

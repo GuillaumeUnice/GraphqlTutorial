@@ -1,0 +1,12 @@
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.dashboard-item {
+    margin: 20px 30px;
+}
+input {
+    width: initial;
+}
